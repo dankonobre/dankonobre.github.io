@@ -1,18 +1,19 @@
 ---
 type Props = {
   position: 'bottom-to-top' | 'top-to-bottom';
-  color: string,
+  color: string;
 };
 
 const { position, color } = Astro.props;
 ---
+
 <div class="w-96"></div>
 <div
   class:list={{
-    ['-z-10 fixed h-96 w-96']: true,
-    [`rounded-full blur-3xl md:blur-3xl opacity-10 ${color}`]: true,
-    ['left-0 top-[75%] dark:top-0 transition-all duration-1000']: position === 'top-to-bottom',
-    ['right-0 bottom-[75%] dark:bottom-0 transition-all duration-1000']: position === 'bottom-to-top',
+    ['fixed -z-10 h-96 w-96']: true,
+    [`rounded-full opacity-10 blur-3xl md:blur-3xl ransition-all duration-1000  ${color}`]: true,
+    ['left-0 top-[75%] tdark:top-0']: position === 'top-to-bottom',
+    ['bottom-[75%] right-0 dark:bottom-0']: position === 'bottom-to-top',
   }}
 >
 </div>

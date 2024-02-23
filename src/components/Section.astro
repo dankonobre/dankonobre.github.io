@@ -1,8 +1,10 @@
 ---
 import Container from './Container.astro';
+
+const { class: className, ...props } = Astro.props;
 ---
 
-<section class="flex w-full justify-center">
+<section class={`flex w-full justify-center ${className}`} {...props}>
   <Container>
     <slot />
   </Container>
