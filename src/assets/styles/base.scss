@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl tracking-wider font-bold;
+  }
+
+  h2 {
+    @apply text-3xl tracking-wider font-bold;
+  }
+
+  h3 {
+    @apply text-2xl tracking-wider font-bold;
+  }
+
+  h4 {
+    @apply text-xl tracking-wider font-bold;
+  }
+
+  h5 {
+    @apply text-lg tracking-wider font-bold;
+  }
+
+  h6 {
+    @apply text-base tracking-wider font-bold;
+  }
+
+  p {
+    @apply text-base tracking-wider font-medium;
+
+    & code {
+      @apply px-2 bg-black/10;
+    }
+  }
+
+  a {
+    @apply text-base leading-5 underline tracking-wider font-medium;
+  }
+
+  ul {
+    @apply text-base list-disc pl-8 py-2 leading-5 tracking-wider font-medium;
+  }
+
+  ol {
+    @apply text-base list-decimal pl-8 py-2 leading-5 tracking-wider font-medium;
+  }
+
+  li {
+    @apply my-2;
+  }
+
+  blockquote {
+    @apply p-2 italic border-l-4 border-slate-400 bg-black/10;
+  }
+
+  section {
+    & p:has(img) {
+      @apply flex justify-center;
+
+      & img {
+        @apply py-4 md:max-w-sm;
+      }
+    }
+  }
+}

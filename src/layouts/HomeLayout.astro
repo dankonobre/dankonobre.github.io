@@ -1,0 +1,11 @@
+---
+import Layout from './BaseLayout.astro';
+
+import BlurCircle from '../components/BlurCircle.astro';
+---
+
+<Layout>
+  <BlurCircle position="top-to-bottom" color="bg-purple-500"/>
+  <BlurCircle position="bottom-to-top" color="bg-cyan-500"/>
+  <slot />
+</Layout>
