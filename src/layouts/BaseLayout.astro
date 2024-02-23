@@ -2,10 +2,9 @@
 import '@assets/styles/base.scss';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt" class="motion-safe:scroll-smooth 2xl:text-5">
   <head>
     <meta charset="UTF-8" />
@@ -13,12 +12,32 @@ import Footer from '@components/Footer.astro';
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   </head>
 
-  <body class="text-neutral-200 bg-neutral-950">
+  <body class="bg-gray-300 text-neutral-900 dark:text-neutral-200 dark:bg-neutral-950">
     <Header />
 
-    <slot />
+    <main>
+      <slot />
+    </main>
 
     <Footer />
-    
+
+    <script>
+      function colorMode() {
+        if (
+          localStorage.theme === 'light' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: light)').matches)
+        ) {
+          document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        }
+      }
+
+      colorMode();
+      document.addEventListener('astro:after-swap', colorMode);
+    </script>
   </body>
 </html>
