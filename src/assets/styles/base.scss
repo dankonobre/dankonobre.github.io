@@ -4,47 +4,47 @@
 
 @layer base {
   h1 {
-    @apply text-4xl tracking-wider font-bold;
+    @apply text-4xl font-bold tracking-wider;
   }
 
   h2 {
-    @apply text-3xl tracking-wider font-bold;
+    @apply text-3xl font-bold tracking-wider;
   }
 
   h3 {
-    @apply text-2xl tracking-wider font-bold;
+    @apply text-2xl font-bold tracking-wider;
   }
 
   h4 {
-    @apply text-xl tracking-wider font-bold;
+    @apply text-xl font-bold tracking-wider;
   }
 
   h5 {
-    @apply text-lg tracking-wider font-bold;
+    @apply text-lg font-bold tracking-wider;
   }
 
   h6 {
-    @apply text-base tracking-wider font-bold;
+    @apply text-base font-bold tracking-wider;
   }
 
   p {
-    @apply text-base tracking-wider font-medium;
+    @apply text-base font-medium tracking-wider;
 
     & code {
-      @apply px-2 bg-black/10;
+      @apply bg-black/10 px-2;
     }
   }
 
   a {
-    @apply text-base leading-5 underline tracking-wider font-medium;
+    @apply text-base font-medium leading-5 tracking-wider underline;
   }
 
   ul {
-    @apply text-base list-disc pl-8 py-2 leading-5 tracking-wider font-medium;
+    @apply list-disc py-2 pl-8 text-base font-medium leading-5 tracking-wider;
   }
 
   ol {
-    @apply text-base list-decimal pl-8 py-2 leading-5 tracking-wider font-medium;
+    @apply list-decimal py-2 pl-8 text-base font-medium leading-5 tracking-wider;
   }
 
   li {
@@ -52,7 +52,7 @@
   }
 
   blockquote {
-    @apply p-2 italic border-l-4 border-slate-400 bg-black/10;
+    @apply border-l-4 border-slate-400 bg-black/10 p-2 italic;
   }
 
   section {

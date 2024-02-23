@@ -48,6 +48,8 @@
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "sass": "^1.71.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-prettier": "^5.0.0",
     "stylelint-scss": "^6.1.0"
   }
 }
