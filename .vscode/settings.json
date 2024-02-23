@@ -61,6 +61,13 @@
     "cSpell.language": "en,pt-BR,pt",
     "cSpell.words": [
         "astrojs",
+        "danko",
         "stylelint"
+    ],
+    "tailwindCSS.classAttributes": [
+        "class",
+        "className",
+        "ngClass",
+        "class:list"
     ],
 }
