@@ -18,10 +18,9 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+bun.lockb
 package-lock.json
 pnpm-lock.yaml
 
 #watch-sass folder (VS Code)
 .watch
-
-node_modules
