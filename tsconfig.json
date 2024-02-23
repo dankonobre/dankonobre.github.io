@@ -9,7 +9,7 @@
     "strict": true,
     "strictNullChecks": true,
     "allowJs": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "moduleResolution": "node",
     "outDir": "dist",
     "module": "ES2022",
@@ -20,13 +20,13 @@
     ],
     "types": [
       "astro/client",
-      "vite/client",
+      "vite/client"
     ],
-    "baseUrl": ".",
+    "baseUrl": "F:/projects/danilo/dankonobre.github.io",
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
-      },
+      }
     ],
     "paths": {
       "@assets/*": [
@@ -52,13 +52,14 @@
       ],
       "@*": [
         "src/*"
-      ],
+      ]
     },
+    "jsxImportSource": "solid-js"
   },
   "include": [
     "src",
     "*.astro",
-    "*.tsx",
+    "*.tsx"
   ],
   "exclude": [
     "node_modules"
