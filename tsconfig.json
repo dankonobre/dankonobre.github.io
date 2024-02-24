@@ -29,6 +29,9 @@
       }
     ],
     "paths": {
+      "@styles/*": [
+        "src/assets/styles/*"
+      ],
       "@assets/*": [
         "src/assets/*"
       ],
@@ -43,6 +46,9 @@
       ],
       "@layouts/*": [
         "src/layouts/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
       ],
       "@hooks/*": [
         "src/hooks/*"

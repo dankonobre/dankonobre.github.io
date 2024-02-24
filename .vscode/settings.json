@@ -61,6 +61,7 @@
     "cSpell.language": "en,pt-BR,pt",
     "cSpell.words": [
         "astrojs",
+        "clsx",
         "danko",
         "stylelint"
     ],
