@@ -1,19 +1,30 @@
 ---
 type Props = {
-  position: 'bottom-to-top' | 'top-to-bottom';
+  position: 'left-bottom-to-top' | 'right-top-to-bottom';
   color: string;
+  height?: string;
+  opacity?: string;
+  blur?: string;
+  className?: string;
 };
 
-const { position, color } = Astro.props;
+const {
+  position,
+  color,
+  height = 'h-2/4',
+  opacity = 'opacity-10',
+  blur = 'blur-3xl',
+  className,
+} = Astro.props;
 ---
 
-<div class="w-96"></div>
 <div
   class:list={{
-    ['fixed -z-10 h-96 w-96']: true,
-    [`rounded-full opacity-10 blur-3xl md:blur-3xl ransition-all duration-1000  ${color}`]: true,
-    ['left-0 top-[75%] tdark:top-0']: position === 'top-to-bottom',
-    ['bottom-[75%] right-0 dark:bottom-0']: position === 'bottom-to-top',
+    ['fixed -z-10 aspect-1  rounded-full transition-all duration-1000']: true,
+    [`${height} ${opacity} ${blur}`]: true,
+    [`${color} ${className}`]: true,
+    ['right-0 top-[75%] dark:top-0']: position === 'right-top-to-bottom',
+    ['bottom-[75%] left-0 dark:bottom-0']: position === 'left-bottom-to-top',
   }}
 >
 </div>
