@@ -1,47 +1,55 @@
 import plugin from 'tailwindcss/plugin';
 
-type BaseColors = {
-    surface: any;
-    primary: any;
-    secondary: any;
-    tertiary: any;
-    [key: string]: any;
+type Color = { [shade: number]: string };
+type BaseColors = { [colorName: string]: Color };
+type OnBaseColors = { [colorName: string]: Color };
+type Utils = { [utilName: string]: string };
+type DefaultShades = { [colorName: string]: { light: number, dark: number } };
+
+const SHADES = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+const MAX_SHADE = 1000;
+
+const generateUtilitiesForColor = (
+    e: Function,
+    utils: Utils,
+    colorName: string,
+    color: Color,
+    defaultShade: { light: number, dark: number },
+    invertShades: boolean = false
+): object => {
+    const utilitiesForColor = Object.entries(utils).flatMap(([util, cssProperty]) => {
+        const baseClasses = [
+            { [`.${e(`${util}-${colorName}`)}`]: { [cssProperty]: color[defaultShade.light] } },
+            { [`.dark .${e(`${util}-${colorName}`)}`]: { [cssProperty]: color[defaultShade.dark] } },
+        ];
+
+        const shadeClasses = SHADES.flatMap(shade => {
+            const darkShade = MAX_SHADE - shade;
+            const lightShade = invertShades ? MAX_SHADE - shade : shade;
+            return [
+                { [`.${e(`${util}-${colorName}-${lightShade}`)}`]: { [cssProperty]: color[shade] } },
+                { [`.dark .${e(`${util}-${colorName}-${lightShade}`)}`]: { [cssProperty]: color[darkShade] } },
+            ];
+        });
+
+        return [...baseClasses, ...shadeClasses];
+    });
+
+    return Object.assign({}, ...utilitiesForColor);
 };
 
-type OnBaseColors = {
-    'on-surface': any;
-    'on-primary': any;
-    'on-secondary': any;
-    'on-tertiary': any;
-    [key: string]: any;
-  };
-
-  type Utils = {
-    bg: string;
-    text: string;
-    fill: string;
-    border: string;
-    outline: string;
-    ring: string;
-    accent: string;
-    [key: string]: string;
-  };
-
-type DefaultShades = {
-    surface: { light: number; dark: number; };
-    'on-surface': { light: number; dark: number; };
-    primary: { light: number; dark: number; };
-    'on-primary': { light: number; dark: number; };
-    secondary: { light: number; dark: number; };
-    'on-secondary': { light: number; dark: number; };
-    tertiary: { light: number; dark: number; };
-    'on-tertiary': { light: number; dark: number; };
-    [key: string]: { light: number; dark: number; };
+const generateUtilitiesForColors = (
+    e: Function,
+    utils: Utils,
+    colors: BaseColors | OnBaseColors,
+    defaultShades: DefaultShades,
+    invertShades: boolean = false
+): object[] => {
+    return Object.entries(colors).map(([colorName, color]) => {
+        const defaultShade = defaultShades[colorName];
+        return generateUtilitiesForColor(e, utils, colorName, color, defaultShade, invertShades);
+    });
 };
-
-type Utilities = {
-    [key: string]: any;
-  };
 
 export default plugin(function ({ addUtilities, e, theme }) {
     const colors = theme('colors') ?? {};
@@ -71,9 +79,6 @@ export default plugin(function ({ addUtilities, e, theme }) {
         'stroke': 'stroke',
     };
 
-    const shades = [0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-    const opacities = [0, 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 95, 100];
-
     const defaultShades: DefaultShades = {
         'surface': { light: 200, dark: 300 },
         'on-surface': { light: 900, dark: 800 },
@@ -88,67 +93,10 @@ export default plugin(function ({ addUtilities, e, theme }) {
         'on-tertiary': { light: 900, dark: 800 },
     };
 
-    const utilities: Utilities = {};
+    const utilities = [
+        ...generateUtilitiesForColors(e, utils, baseColors, defaultShades),
+        ...generateUtilitiesForColors(e, utils, onBaseColors, defaultShades, true)
+    ];
 
-    for (const colorName in defaultShades) {
-        if (!(colorName in baseColors) && !(colorName in onBaseColors)) {
-            throw new Error(`Color name "${colorName}" specified in defaultShades does not exist in baseColors or onBaseColors.`);
-        }
-
-        const colorObject = baseColors[colorName] || onBaseColors[colorName];
-        const { light, dark } = defaultShades[colorName];
-
-        if (!(light in colorObject)) {
-            throw new Error(`Light shade value "${light}" for color name "${colorName}" does not exist.`);
-        }
-
-        if (!(dark in colorObject)) {
-            throw new Error(`Dark shade value "${dark}" for color name "${colorName}" does not exist.`);
-        }
-    }
-
-    for (const colorName in baseColors) {
-        for (const util in utils) {
-            utilities[`.${e(`${util}-${colorName}`)}`] = { [utils[util]]: baseColors[colorName][defaultShades[colorName].light] };
-            utilities[`.dark .${e(`${util}-${colorName}`)}`] = { [utils[util]]: baseColors[colorName][defaultShades[colorName].dark] };
-
-            for (const shade of shades) {
-                const className = `.${e(`${util}-${colorName}-${shade}`)}`;
-                utilities[className] = { [utils[util]]: baseColors[colorName][shade] };
-
-                const darkShade = 1000 - shade;
-                utilities[`.dark ${className}`] = { [utils[util]]: baseColors[colorName][darkShade] };
-
-                for (const opacity of opacities) {
-                    const classNameOpacity = `.${e(`${util}-${colorName}-${shade}/${opacity}`)}`;
-                    utilities[classNameOpacity] = { [utils[util]]: `rgba(${baseColors[colorName][shade]}, ${opacity / 100})` };
-
-                    utilities[`.dark ${classNameOpacity}`] = { [utils[util]]: `rgba(${baseColors[colorName][darkShade]}, ${opacity / 100})` };
-                }
-            }
-        }
-    }
-
-    for (const colorName in onBaseColors) {
-        for (const util in utils) {
-            utilities[`.${e(`${util}-${colorName}`)}`] = { [utils[util]]: onBaseColors[colorName][defaultShades[colorName].dark] };
-            utilities[`.dark .${e(`${util}-${colorName}`)}`] = { [utils[util]]: onBaseColors[colorName][defaultShades[colorName].light] };
-
-            for (const shade of shades) {
-                const className = `.${e(`${util}-${colorName}-${shade}`)}`;
-                const darkShade = 1000 - shade;
-                utilities[className] = { [utils[util]]: onBaseColors[colorName][darkShade] };
-                utilities[`.dark ${className}`] = { [utils[util]]: onBaseColors[colorName][shade] };
-
-                for (const opacity of opacities) {
-                    const classNameOpacity = `.${e(`${util}-${colorName}-${shade}/${opacity}`)}`;
-                    utilities[classNameOpacity] = { [utils[util]]: `rgba(${onBaseColors[colorName][darkShade]}, ${opacity / 100})` };
-
-                    utilities[`.dark ${classNameOpacity}`] = { [utils[util]]: `rgba(${onBaseColors[colorName][shade]}, ${opacity / 100})` };
-                }
-            }
-        }
-    }
-
-    addUtilities(utilities);
-})
+    addUtilities(Object.assign({}, ...utilities));
+});
