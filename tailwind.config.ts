@@ -4,7 +4,7 @@ import colors from "tailwindcss/colors";
 import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
 
 import themeColors from "./src/assets/styles/themeColors.json";
-import generateTheme from './src/utils/generateTheme';
+import themeGenerator from './src/utils/tailwindColorThemeGenerator';
 
 module.exports = {
   mode: 'jit',
@@ -47,7 +47,7 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require("tailwindcss-animate"),
     addVariablesForColors,
-    generateTheme,
+    themeGenerator,
   ]
 };
 
