@@ -4,6 +4,7 @@ import colors from "tailwindcss/colors";
 import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
 
 import themeColors from "./src/assets/styles/themeColors.json";
+import generateTheme from './src/utils/generateTheme';
 
 module.exports = {
   mode: 'jit',
@@ -16,7 +17,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        danko: themeColors
+        themed: themeColors
       },
       backgroundImage: {
 
@@ -46,6 +47,7 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require("tailwindcss-animate"),
     addVariablesForColors,
+    generateTheme,
   ]
 };
 
@@ -59,3 +61,5 @@ function addVariablesForColors({ addBase, theme }: any) {
     ":root": newVars,
   });
 }
+
+
