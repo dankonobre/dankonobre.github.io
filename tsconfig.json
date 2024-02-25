@@ -9,7 +9,7 @@
     "strict": true,
     "strictNullChecks": true,
     "allowJs": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "moduleResolution": "node",
     "outDir": "dist",
     "module": "ES2022",
@@ -22,7 +22,7 @@
       "astro/client",
       "vite/client"
     ],
-    "baseUrl": ".",
+    "baseUrl": "F:/projects/danilo/dankonobre.github.io",
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
@@ -60,7 +60,7 @@
         "src/*"
       ]
     },
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "react"
   },
   "include": [
     "src",

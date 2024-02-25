@@ -6,30 +6,37 @@
   "version": "0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev --verbose",
+    "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint-fix": "npm run eslint-fix && npm run stylelint-fix",
     "eslint-fix": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
-    "stylelint-fix": "stylelint \"**/*.{css,scss,sass}\" --fix"
+    "stylelint-fix": "stylelint \"**/*.{css,scss,sass}\" --fix",
+    "build-theme": ""
   },
   "dependencies": {
     "@astrojs/check": "^0.5.5",
     "@astrojs/mdx": "^2.1.1",
+    "@astrojs/react": "^3.0.10",
     "@astrojs/solid-js": "^4.0.1",
     "@astrojs/tailwind": "^5.1.0",
+    "@sentry/astro": "^7.102.1",
+    "@spotlightjs/astro": "^1.0.16",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.10",
+    "@types/react-dom": "^18.2.19",
     "astro": "^4.4.3",
+    "astro-lighthouse": "^0.1.3",
+    "astro-meta-tags": "^0.2.1",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.6",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "solid-js": "^1.8.15",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.3.3",
     "vite": "^5.1.4"
@@ -54,6 +61,7 @@
     "sass": "^1.71.1",
     "stylelint-config-standard": "^36.0.0",
     "stylelint-prettier": "^5.0.0",
-    "stylelint-scss": "^6.1.0"
+    "stylelint-scss": "^6.1.0",
+    "tailwindcss": "^3.4.1"
   }
 }
