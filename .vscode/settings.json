@@ -58,6 +58,15 @@
         "**/node_modules/": true,
         "**/node_modules/**": true
     },
+    "cSpell.ignorePaths": [
+        "package-lock.json",
+        "node_modules",
+        "vscode-extension",
+        ".git/objects",
+        ".vscode",
+        ".vscode-insiders",
+        "./src/components/ThemeExample/content/*"
+    ],
     "cSpell.language": "en,pt-BR,pt",
     "cSpell.words": [
         "astrojs",

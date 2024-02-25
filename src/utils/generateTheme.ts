@@ -68,6 +68,7 @@ export default plugin(function ({ addUtilities, e, theme }) {
         'outline': 'outline-color',
         'ring': 'ring-color',
         'accent': 'accent-color',
+        'stroke': 'stroke',
     };
 
     const shades = [0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
@@ -83,7 +84,7 @@ export default plugin(function ({ addUtilities, e, theme }) {
         'secondary': { light: 200, dark: 300 },
         'on-secondary': { light: 900, dark: 800 },
 
-        'tertiary': { light: 400, dark: 500 },
+        'tertiary': { light: 300, dark: 400 },
         'on-tertiary': { light: 900, dark: 800 },
     };
 

@@ -1,0 +1,56 @@
+---
+import Layout from '@layouts/PageLayout.astro';
+import Section from '@components/Section.astro';
+import FilledCircles from '@components/ThemeExample/FilledCircles.astro';
+import ColorPalettes from '../components/ThemeExample/ColorPalettes.astro';
+---
+
+<Layout>
+  <Section>
+    <div class="space-y-4 rounded-lg p-4 bg-surface-100">
+      <button
+        class="rounded shadow-sm bg-primary-300 outline-tertiary-300 text-on-primary-300"
+      >
+        This is a button with a tertiary outline color of shade 300, primary
+        background color of shade 300 and text color of shade 300.
+      </button>
+
+      <button class="rounded shadow-sm ring-tertiary-200/40">
+        This is a div with a tertiary ring color of shade 200 and 40% opacity.
+      </button>
+
+      <hr />
+
+      <section class="space-y-4">
+        <h2 class="text-on-surface-100">Color Palettes</h2>
+        <div class="space-y-4 px-4">
+          <ColorPalettes />
+        </div>
+      </section>
+
+      <hr />
+
+      <section class="space-y-4">
+        <h2 class="text-on-surface-100">Filled Circles</h2>
+        <div class="space-y-4 px-4">
+          <FilledCircles />
+        </div>
+      </section>
+
+      <hr />
+
+      <input
+        type="radio"
+        class="rounded shadow-sm accent-tertiary-500"
+        name="test"
+        value="test"
+      />
+      <input
+        type="checkbox"
+        class="rounded border shadow-sm bg-tertiary-500 border-tertiary-500 ring-tertiary-500 checked:bg-tertiary-500 hover:bg-tertiary-500 focus:bg-tertiary-500"
+        name="test"
+        value="test"
+      />
+    </div>
+  </Section>
+</Layout>
