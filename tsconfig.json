@@ -22,7 +22,7 @@
       "astro/client",
       "vite/client"
     ],
-    "baseUrl": "F:/projects/danilo/dankonobre.github.io",
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"

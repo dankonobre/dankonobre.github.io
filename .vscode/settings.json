@@ -63,6 +63,7 @@
         "astrojs",
         "clsx",
         "danko",
+        "spotlightjs",
         "stylelint"
     ],
     "tailwindCSS.classAttributes": [

@@ -14,11 +14,13 @@ export default defineConfig({
   site: 'https://dankonobre.github.io',
   base: '/',
   output: 'static',
-  integrations: [, tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), mdx(),
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false
+      }
+    }),
+    mdx(),
     solidJs(),
     metaTags(),
     react(),
