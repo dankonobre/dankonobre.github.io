@@ -36,7 +36,7 @@ const threshold = 1000;
  * Generates utility classes for a single color.
  * 
  * @param {Function} e - The escape function provided by Tailwind CSS.
- * @param {Utils} utils - The utilities to generate classes for.
+ * @param {Utils} utilities - The utilities to generate classes for.
  * @param {string} colorName - The name of the color to generate classes for.
  * @param {Color} color - The color object to generate classes for.
  * @param {{ light: number, dark: number }} defaultShade - The default shades for the color.
