@@ -20,14 +20,49 @@ export default plugin(function ({ addUtilities, e, theme }) {
     };
 
     const utils: Utils = {
-        'bg': 'background-color',
-        'text': 'color',
-        'fill': 'fill',
-        'border': 'border-color',
-        'outline': 'outline-color',
-        'ring': 'ring-color',
-        'accent': 'accent-color',
-        'stroke': 'stroke',
+        bg: (value) => ({
+            'background-color': value
+        }),
+        text: (value) => ({
+            'color': value
+        }),
+        border: (value) => ({
+            'border-color': value
+        }),
+        'border-t': (value) => ({
+            'border-top-color': value
+        }),
+        'border-r': (value) => ({
+            'border-right-color': value
+        }),
+        'border-b': (value) => ({
+            'border-bottom-color': value
+        }),
+        'border-l': (value) => ({
+            'border-left-color': value
+        }),
+        ring: (value) => ({
+            '--tw-ring-color': value
+        }),
+        'ring-offset': (value) => ({
+            '--tw-ring-offset-color': value
+        }),
+        'shadow': (value) => ({
+            '--tw-shadow-color': value,
+            '--tw-shadow': 'var(--tw-shadow-colored)'
+        }),
+        accent: (value) => ({
+            'accent-color': value
+        }),
+        caret: (value) => ({
+            'caret-color': value
+        }),
+        fill: (value) => ({
+            'fill': value
+        }),
+        stroke: (value) => ({
+            'stroke': value
+        }),
     };
 
     const defaultShades: DefaultShades = {
