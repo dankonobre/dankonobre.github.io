@@ -29,7 +29,7 @@
     @apply text-base font-medium tracking-wider;
 
     & code {
-      @apply bg-black/10 px-2;
+      @apply bg-black/10;
     }
   }
 
@@ -47,6 +47,10 @@
 
   li {
     @apply my-2;
+
+    & code {
+      @apply bg-black/10;
+    }
   }
 
   blockquote {
