@@ -29,6 +29,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@types/react-dom": "^18.2.19",
     "astro": "^4.4.3",
+    "astro-icon": "^1.1.0",
     "astro-lighthouse": "^0.1.3",
     "astro-meta-tags": "^0.2.1",
     "clsx": "^2.1.0",
@@ -42,6 +43,7 @@
     "vite": "^5.1.4"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.1.64",
     "@types/node": "^20.11.20",
     "@types/react": "^18.2.58",
     "@typescript-eslint/eslint-plugin": "^7.0.2",

@@ -29,7 +29,7 @@ export type Utils = { [utilName: string]: (value: string) => { [key: string]: st
 export type DefaultShades = { [colorName: string]: { light: number, dark: number } };
 
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-const opacities = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+const opacities = [0, 50, 100];
 const threshold = 1000;
 
 /**

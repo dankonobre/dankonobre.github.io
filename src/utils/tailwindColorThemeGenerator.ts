@@ -29,23 +29,8 @@ export default plugin(function ({ addUtilities, e, theme }) {
         border: (value) => ({
             'border-color': value
         }),
-        'border-t': (value) => ({
-            'border-top-color': value
-        }),
-        'border-r': (value) => ({
-            'border-right-color': value
-        }),
-        'border-b': (value) => ({
-            'border-bottom-color': value
-        }),
-        'border-l': (value) => ({
-            'border-left-color': value
-        }),
         ring: (value) => ({
             '--tw-ring-color': value
-        }),
-        'ring-offset': (value) => ({
-            '--tw-ring-offset-color': value
         }),
         'shadow': (value) => ({
             '--tw-shadow-color': value,
@@ -78,7 +63,6 @@ export default plugin(function ({ addUtilities, e, theme }) {
         'on-secondary': { light: 900, dark: 800 },
         'on-tertiary': { light: 900, dark: 800 },
     };
-
 
     const utilities = [
         ...generateUtilitiesForColors(e, utils, baseColors, defaultShades),
